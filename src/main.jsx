@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 
 import './css/resets.css'
 import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/utilities.css'
 import './css/media.css'
 import './index.css'
