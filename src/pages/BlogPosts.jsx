@@ -44,7 +44,7 @@ export default function BlogPosts() {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div className="col-md-4">
                         <div className="card h-100 border-0 shadow-sm">
                             <div className="card-body">

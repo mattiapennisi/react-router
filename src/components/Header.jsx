@@ -11,19 +11,19 @@ export default function Header() {
                     <div className="collapse navbar-collapse" id="collapsibleNavId">
                         <ul className="navbar-nav me-auto mt-2 mt-lg-0">
                             <li className="nav-item">
-                                <NavLink className="nav-link active" to="/" aria-current="page">
+                                <NavLink className="nav-link" to="/" aria-current="page">
                                     Home
                                     <span className="visually-hidden">(current)</span>
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link active" to="/about" aria-current="page">
+                                <NavLink className="nav-link" to="/about" aria-current="page">
                                     Chi siamo
                                     <span className="visually-hidden">(current)</span>
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link active" to="/blogposts" aria-current="page">
+                                <NavLink className="nav-link" to="/blogposts" aria-current="page">
                                     Blog
                                     <span className="visually-hidden">(current)</span>
                                 </NavLink>
