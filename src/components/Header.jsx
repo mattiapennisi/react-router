@@ -18,7 +18,7 @@ export default function Header() {
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link active" to="/about" aria-current="page">
-                                    About
+                                    Chi siamo
                                     <span className="visually-hidden">(current)</span>
                                 </NavLink>
                             </li>
@@ -30,7 +30,7 @@ export default function Header() {
                             </li>
                         </ul>
                     </div>
-                    
+
                 </div>
             </nav>
         </header>
