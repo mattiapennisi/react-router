@@ -1,9 +1,9 @@
 export default function Home() {
     return (
         <>
-            <div className="bg-primary text-white py-5">
+            <main className="bg-white py-5">
                 <div className="container">
-                    <div className="row align-items-center">
+                    <div id="jumbotron" className="row align-items-center">
                         <div className="col-lg-6">
                             <h1 className="display-4 fw-bold">Innovazione Digitale</h1>
                             <p className="fs-5 mt-3">
@@ -16,7 +16,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </main>
         </>
     );
 }

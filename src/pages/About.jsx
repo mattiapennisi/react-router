@@ -1,7 +1,7 @@
 export default function About() {
     return (
         <>
-            <div className="py-5 bg-light">
+            <main className="py-5 bg-white">
                 <div className="container">
                     <div className="row mb-4">
                         <div className="col-12 text-center">
@@ -51,7 +51,7 @@ export default function About() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </main>
         </>
     )
 }
