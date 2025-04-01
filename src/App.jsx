@@ -1,17 +1,24 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import DefaultLayout from './layouts/DefaultLayout.jsx'
 
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import BlogPosts from './pages/BlogPosts.jsx'
-import Header from './components/Header.jsx'
-import Main from './components/Main.jsx'
-import Footer from './components/Footer.jsx'
 
 function App() {
 
   return (
     <>
+      <BrowserRouter>
+        <Routes>
+          <Route Component={DefaultLayout}>
+            <Route path='/' Component={Home} />
+            <Route path='/about' Component={About} />
+            <Route path='/blogposts' Component={BlogPosts} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
