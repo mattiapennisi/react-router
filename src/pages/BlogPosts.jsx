@@ -6,7 +6,7 @@ export default function BlogPosts() {
             <main className="container py-5">
                 <div className="row mb-4">
                     <div className="col-12 text-center">
-                        <h1 className="display-5 fw-bold">Blog</h1>
+                        <h1 className="fw-bold">Blog</h1>
                     </div>
                 </div>
 
