@@ -31,59 +31,76 @@ export default function BlogPost() {
   }
 
   const navigateToNext = () => {
-    if (numberId < 101)
       navigate(`/blogposts/${numberId + 1}`)
+  }
+
+  if (!isLoaded) {
+    return (
+      <div className="container py-5">
+        <div className='d-flex justify-content-center py-5'>
+          <Quantum
+            size="45"
+            speed="1.75"
+            color="black"
+            className='py-5'
+          />
+        </div>
+      </div>
+    )
+  }
+
+  if (!post.id) {
+    return (
+      <div className="container py-5 text-center">
+        <div className="alert alert-warning" role="alert">
+          Post non trovato!
+        </div>
+        <button
+          className="btn btn-primary mt-3"
+          onClick={() => navigate('/blogposts')}
+        >
+          Torna al Blog
+        </button>
+      </div>
+    )
   }
 
   return (
     <div className="container py-5">
-      {
-        !isLoaded ? (
-          <div className='d-flex justify-content-center py-5'>
-            <Quantum
-              size="45"
-              speed="1.75"
-              color="black"
-              className='py-5'
-            />
-          </div>
-        ) : (
-          <div className="row">
-            <div className="col-md-8 mx-auto">
-              <div className="card border-0 shadow">
-                <div className="card-body p-4">
-                  <h2 className="card-title fw-bold">{post.title}</h2>
-                  <p className="card-text fs-5">{post.body}</p>
-                  <div className="d-flex justify-content-between align-items-center mt-4">
-                    <div className="d-flex flex-row gap-3">
-                      <button
-                        className="btn btn-primary"
-                        onClick={navigateToPrevious}
-                        disabled={numberId <= 1}
-                      >
-                        Post Precedente
-                      </button>
-                      <button
-                        className="btn btn-outline-primary"
-                        onClick={() => navigate('/blogposts')}
-                      >
-                        Torna al Blog
-                      </button>
-                      <button
-                        className="btn btn-primary"
-                        onClick={navigateToNext}
-                        disabled={numberId >= 100}
-                      >
-                        Post Successivo
-                      </button>
-                    </div>
-                  </div>
+      <div className="row">
+        <div className="col-md-8 mx-auto">
+          <div className="card border-0 shadow">
+            <div className="card-body p-4">
+              <h2 className="card-title fw-bold">{post.title}</h2>
+              <p className="card-text fs-5">{post.body}</p>
+              <div className="d-flex justify-content-between align-items-center mt-4">
+                <div className="d-flex flex-row gap-3">
+                  <button
+                    className="btn btn-primary"
+                    onClick={navigateToPrevious}
+                    disabled={numberId <= 1}
+                  >
+                    Post Precedente
+                  </button>
+                  <button
+                    className="btn btn-outline-primary"
+                    onClick={() => navigate('/blogposts')}
+                  >
+                    Torna al Blog
+                  </button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={navigateToNext}
+                    disabled={numberId >= 100}
+                  >
+                    Post Successivo
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        )
-      }
+        </div>
+      </div>
     </div>
   )
 }
