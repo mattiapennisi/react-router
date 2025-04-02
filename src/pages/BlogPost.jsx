@@ -31,7 +31,8 @@ export default function BlogPost() {
   }
 
   const navigateToNext = () => {
-    navigate(`/blogposts/${numberId + 1}`)
+    if (numberId < 101)
+      navigate(`/blogposts/${numberId + 1}`)
   }
 
   return (
@@ -71,6 +72,7 @@ export default function BlogPost() {
                       <button
                         className="btn btn-primary"
                         onClick={navigateToNext}
+                        disabled={numberId >= 100}
                       >
                         Post Successivo
                       </button>
