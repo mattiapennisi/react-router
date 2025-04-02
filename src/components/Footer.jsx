@@ -4,7 +4,7 @@ export default function Footer() {
             <div className="container">
                 
                 <div className="row align-items-center">
-                    <div><i class="fa fa-copyright" aria-hidden="true"></i> John Doe</div>
+                    <div><i className="fa fa-copyright" aria-hidden="true"></i> John Doe</div>
                 </div>
             </div>
         </footer>

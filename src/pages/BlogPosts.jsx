@@ -1,6 +1,26 @@
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
+import { Quantum } from 'ldrs/react'
+import 'ldrs/react/Quantum.css'
 
 export default function BlogPosts() {
+
+    const [posts, setPosts] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(res => res.json())
+            .then(data => {
+                setPosts(data)
+                setIsLoaded(true)
+            })
+            .catch(err => {
+                console.error(err)
+                setIsLoaded(true)
+            })
+    }, [])
+
     return (
         <>
             <main className="container py-5">
@@ -10,74 +30,35 @@ export default function BlogPosts() {
                     </div>
                 </div>
 
-                <div className="row g-4">
-
-                    <div className="col-md-4">
-                        <div className="card h-100 border-0 shadow-sm">
-                            <div className="card-body">
-                                <div className="d-flex justify-content-between align-items-center mb-2">
-                                </div>
-                                <h5 className="card-title">Come ottimizzare le prestazioni del tuo sito</h5>
-                                <p className="card-text">Consigli pratici per migliorare la velocità di caricamento e l'esperienza utente del tuo sito web.</p>
-                            </div>
+                {
+                    !isLoaded ? (
+                        <div className='d-flex justify-content-center py-5'>
+                            <Quantum
+                                size="45"
+                                speed="1.75"
+                                color="black" className='py-5'
+                            />
                         </div>
-                    </div>
-
-                    <div className="col-md-4">
-                        <div className="card h-100 border-0 shadow-sm">
-                            <div className="card-body">
-                                <div className="d-flex justify-content-between align-items-center mb-2">
+                    ) : (
+                        <div className="row g-4">
+                            {posts.map(post => (
+                                <div className="col-md-4" key={post.id}>
+                                    <div className="card h-100 border-0 shadow-sm">
+                                        <div className="card-body">
+                                            <div className="d-flex justify-content-between align-items-center mb-2">
+                                            </div>
+                                            <h5 className="card-title">{post.title}</h5>
+                                            <p className="card-text">{post.body}</p>
+                                            <Link to={`/blogposts/${post.id}`}>
+                                                <button className="btn btn-primary">Apri post</button>
+                                            </Link>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h5 className="card-title">Come ottimizzare le prestazioni del tuo sito</h5>
-                                <p className="card-text">Consigli pratici per migliorare la velocità di caricamento e l'esperienza utente del tuo sito web.</p>
-                            </div>
+                            ))}
                         </div>
-                    </div>
-
-                    <div className="col-md-4">
-                        <div className="card h-100 border-0 shadow-sm">
-                            <div className="card-body">
-                                <div className="d-flex justify-content-between align-items-center mb-2">
-                                </div>
-                                <h5 className="card-title">Come ottimizzare le prestazioni del tuo sito</h5>
-                                <p className="card-text">Consigli pratici per migliorare la velocità di caricamento e l'esperienza utente del tuo sito web.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4">
-                        <div className="card h-100 border-0 shadow-sm">
-                            <div className="card-body">
-                                <div className="d-flex justify-content-between align-items-center mb-2">
-                                </div>
-                                <h5 className="card-title">Come ottimizzare le prestazioni del tuo sito</h5>
-                                <p className="card-text">Consigli pratici per migliorare la velocità di caricamento e l'esperienza utente del tuo sito web.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4">
-                        <div className="card h-100 border-0 shadow-sm">
-                            <div className="card-body">
-                                <div className="d-flex justify-content-between align-items-center mb-2">
-                                </div>
-                                <h5 className="card-title">Come ottimizzare le prestazioni del tuo sito</h5>
-                                <p className="card-text">Consigli pratici per migliorare la velocità di caricamento e l'esperienza utente del tuo sito web.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4">
-                        <div className="card h-100 border-0 shadow-sm">
-                            <div className="card-body">
-                                <div className="d-flex justify-content-between align-items-center mb-2">
-                                </div>
-                                <h5 className="card-title">Come ottimizzare le prestazioni del tuo sito</h5>
-                                <p className="card-text">Consigli pratici per migliorare la velocità di caricamento e l'esperienza utente del tuo sito web.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    )
+                }
             </main>
         </>
     )
